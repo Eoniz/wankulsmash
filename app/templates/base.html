@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}" />
+
+        <title>WankulsMash</title>
+    </head>
+    
+    <body>
+        <div class="container">
+            <header>
+                <a class="white" href="/"><h1>WANKULSMASH</h1></a>
+            </header>
+            {% block body %}{% endblock %}
+
+            <div class="links">
+                <a href="/">
+                    Accueil
+                </a>
+                <a href="/ranking">
+                    Scores
+                </a>
+            </div>
+            <div class="copyright">
+                Copyright &copy; 2019 Artisien Nathan
+            </div>
+        </div>
+    </body>
+</html>
