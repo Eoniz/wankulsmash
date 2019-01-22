@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, redirect
 from app import db
 from app.mod_image.model import Image
+from sqlalchemy import desc
 import random
 import base64
 
@@ -69,6 +70,9 @@ def vote(duel_code, wankul_id):
     winner = wankul_a if wankul_id == wankuls[0] else wankul_b
     looser = wankul_b if winner == wankul_a else wankul_a
 
+    print(f"[VOTE] {wankul_a.name} VS {wankul_b.name} ; \
+        Result : {winner.name}")
+
     # Si on a bien les deux wankuls
     if wankul_a is not None and wankul_b is not None:
         # Si la différence de score est correcte
@@ -89,3 +93,10 @@ def vote(duel_code, wankul_id):
             db.session.commit()
     
     return redirect('/')
+
+
+@mod_image.route('/ranking')
+def ranking():
+    wankuls = Image.query.order_by(desc(Image.score))
+
+    return render_template('ranking.html', wankuls=wankuls)

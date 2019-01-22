@@ -9,6 +9,23 @@
     </head>
     
     <body>
-        {% block body %}{% endblock %}
+        <div class="container">
+            <header>
+                <a class="white" href="/"><h1>WANKULSMASH</h1></a>
+            </header>
+            {% block body %}{% endblock %}
+
+            <div class="links">
+                <a href="/">
+                    Accueil
+                </a>
+                <a href="/ranking">
+                    Scores
+                </a>
+            </div>
+            <div class="copyright">
+                Copyright &copy; 2019 Artisien Nathan
+            </div>
+        </div>
     </body>
 </html>

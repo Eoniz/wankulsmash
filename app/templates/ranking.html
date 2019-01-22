@@ -1,0 +1,32 @@
+{% extends('base.html') %}
+
+{% block body %}
+    <div class="ranking">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Score</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for wankul in wankuls %}
+                    {% with path = "wankuls/" + wankul.filename %}
+                        <tr>
+                            <th>{{ loop.index0 + 1 }}</th>
+                            <th>{{ wankul.name }}</th>
+                            <th>{{ wankul.score | int }}</th>
+                            <th>
+                                <div class="smash-wankul-table">
+                                    <img alt="wankil_{{ wankul.name }}" src='{{ url_for("static", filename=path) }}' />
+                                </div>
+                            </th>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
