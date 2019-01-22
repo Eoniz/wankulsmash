@@ -11,7 +11,7 @@ for image in images:
     # get the name by replacing '_' by whitespace, and removing ext
     name = image.lower().replace('_', ' ').replace('.png', '')
     path = image
-    score = random.randrange(1000, 2600)
+    score = 1000  # Each wankul start with 1000 score
 
     existing = Image.query.filter_by(filename=path).first()
     if existing is None:  # only add the image if it's not already in db
